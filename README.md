@@ -1,0 +1,1 @@
+# EffekseerForRPGMakerMZ_Ex
