@@ -16,13 +16,7 @@
  * @help
  * EffekseerForRPGMakerMZ_Ex.js
  * 
- * Effekseer の調整を行うための各種パラメータを提供します。
- * 
- * このプラグインを使用するためには、Effekseer のコアスクリプトを更新する必要があります。
- * 
- * 1. 次のダウンロードサイトから、本プラグインのバージョンと同一の「Effekseer for WebGL」をダウンロードしてください。
- *    http://effekseer.github.io/jp/download.html
- * 2. 「effekseer.min.js」と「effekseer.wasm」をそれぞれ js/libs フォルダ内のファイルへ上書きしてください。
+ * Effekseer の機能を拡張するプラグインです。
  * 
  * @param InstanceMaxCount
  * @desc 一度に表示できるインスタンスの最大数。表示しきれない多量のエフェクトを使う場合は変更してください。
