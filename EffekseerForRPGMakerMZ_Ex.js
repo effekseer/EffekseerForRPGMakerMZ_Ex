@@ -9,7 +9,7 @@
 
 /*:ja
  * @target MZ
- * @url https://raw.githubusercontent.com/munokura/Effekseer-sample-for-RPG-Tkool-MZ/master/Effekseer_RPGMakerMZ_Patch.js
+ * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex/blob/master/EffekseerForRPGMakerMZ_Ex.js
  * @plugindesc Effekseer 拡張プラグイン v1.52m
  * @author Effekseer
  *
@@ -25,12 +25,12 @@
  * 2. 「effekseer.min.js」と「effekseer.wasm」をそれぞれ js/libs フォルダ内のファイルへ上書きしてください。
  * 
  * @param InstanceMaxCount
- * @desc 一度に表示できるインスタンスの最大数。デフォルトでは表示しきれない多量のエフェクトを使う場合は変更してください。
+ * @desc 一度に表示できるインスタンスの最大数。表示しきれない多量のエフェクトを使う場合は変更してください。
  * @type number
- * @default 4000
+ * @default 10000
  * 
  * @param SquareMaxCount
- * @desc 一度に表示できるスプライトの最大数。デフォルトでは表示しきれない多量のエフェクトを使う場合は変更してください。
+ * @desc 一度に表示できるスプライトの最大数。表示しきれない多量のエフェクトを使う場合は変更してください。
  * @type number
  * @default 10000
  * 
@@ -46,7 +46,7 @@
     Graphics._createEffekseerContext = function () {
         if (this._app && window.effekseer) {
             try {
-                const actualInstanceMaxCount = (paramInstanceMaxCount) ? paramInstanceMaxCount : 4000;
+                const actualInstanceMaxCount = (paramInstanceMaxCount) ? paramInstanceMaxCount : 10000;
                 const actualSquareMaxCount = (paramSquareMaxCount) ? paramSquareMaxCount : 10000;
 
                 this._effekseer = effekseer.createContext();
