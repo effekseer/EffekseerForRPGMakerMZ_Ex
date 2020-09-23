@@ -30,6 +30,30 @@
  * 
  */
 
+/*
+ * @target MZ
+ * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex/blob/master/EffekseerForRPGMakerMZ_Ex.js
+ * @plugindesc Effekseer Ex v1.52m
+ * @author Effekseer
+ *
+ * @help
+ * EffekseerForRPGMakerMZ_Ex.js
+ * 
+ * It is a plugin to extend the functionality of Effekseer.
+ * 
+ * @param InstanceMaxCount
+ * @desc The maximum number of instances that can be displayed at one time. If you are using a large number of effects that can't be displayed all at once, you may need to change this setting.
+ * @type number
+ * @default 10000
+ * 
+ * @param SquareMaxCount
+ * @desc The maximum number of sprites that can be displayed at one time. If you are using a large number of effects that can't be displayed all at once, you may need to change this setting.
+ * @type number
+ * @default 10000
+ * 
+ */
+
+
 (() => {
     'use strict'
     var pluginName = 'EffekseerForRPGMakerMZ_Ex';
