@@ -6,7 +6,7 @@ The plugin is for RPG MakerMZ to enhance an animation of Effekseer
 
 # Download
 
-https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex/blob/master/EffekseerForRPGMakerMZ_Ex.js
+[1.52n-1.00](https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex/releases/download/152n-100/EffekseerForRPGMakerMZ_Ex-152n-100.zip)
 
 # Features
 
