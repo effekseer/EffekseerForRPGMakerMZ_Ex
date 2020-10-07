@@ -9,13 +9,11 @@
 
 /*:ja
  * @target MZ
- * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex/blob/master/EffekseerForRPGMakerMZ_Ex.js
- * @plugindesc Effekseer 拡張プラグイン v1.52m
+ * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
+ * @plugindesc Effekseer 拡張プラグイン v1.52m - 1.00
  * @author Effekseer
  *
  * @help
- * EffekseerForRPGMakerMZ_Ex.js
- * 
  * Effekseer の機能を拡張するプラグインです。
  * 
  * @param InstanceMaxCount
@@ -32,13 +30,11 @@
 
 /*
  * @target MZ
- * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex/blob/master/EffekseerForRPGMakerMZ_Ex.js
- * @plugindesc Effekseer Ex v1.52m
+ * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
+ * @plugindesc Effekseer Ex v1.52m - 1.00
  * @author Effekseer
  *
  * @help
- * EffekseerForRPGMakerMZ_Ex.js
- * 
  * It is a plugin to extend the functionality of Effekseer.
  * 
  * @param InstanceMaxCount
