@@ -7,6 +7,27 @@
 // [GitHub] : https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
 //==============================================================================
 
+/*:
+ * @target MZ
+ * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
+ * @plugindesc Effekseer Extended plugin v1.52n - 1.00
+ * @author Effekseer
+ *
+ * @help
+ * It is a plugin to extend the functionality of Effekseer.
+ * Change it if you want to use a large amount of effects that can't be displayed.
+ * 
+ * @param InstanceMaxCount
+ * @desc The maximum number of instances that can be displayed at one time.
+ * @type number
+ * @default 10000
+ * 
+ * @param SquareMaxCount
+ * @desc The maximum number of sprites that can be displayed at one time.
+ * @type number
+ * @default 10000
+ * 
+ */
 /*:ja
  * @target MZ
  * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
@@ -27,28 +48,6 @@
  * @default 10000
  * 
  */
-
-/*
- * @target MZ
- * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
- * @plugindesc Effekseer Ex v1.52n - 1.00
- * @author Effekseer
- *
- * @help
- * It is a plugin to extend the functionality of Effekseer.
- * 
- * @param InstanceMaxCount
- * @desc The maximum number of instances that can be displayed at one time. If you are using a large number of effects that can't be displayed all at once, you may need to change this setting.
- * @type number
- * @default 10000
- * 
- * @param SquareMaxCount
- * @desc The maximum number of sprites that can be displayed at one time. If you are using a large number of effects that can't be displayed all at once, you may need to change this setting.
- * @type number
- * @default 10000
- * 
- */
-
 
 (() => {
     'use strict'
