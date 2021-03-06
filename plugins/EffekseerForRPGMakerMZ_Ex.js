@@ -137,6 +137,18 @@
             renderer.gl.viewport(0, 0, renderer.view.width, renderer.view.height);
         };
 
+        Graphics._onTick = function(deltaTime) {
+            this._fpsCounter.startTick();
+            if (this._tickHandler) {
+                this._tickHandler(deltaTime);
+            }
+            if (this._canRender()) {
+                isBackgroundCaptured = false;
+                this._app.render();
+            }
+            this._fpsCounter.endTick();
+        };
+
         Sprite_Animation.prototype._render = function (renderer) {
             if (this._targets.length > 0 && this._handle && this._handle.exists) {
                 this.onBeforeRender(renderer);
@@ -144,7 +156,11 @@
                 this.setProjectionMatrix(renderer);
                 this.setCameraMatrix(renderer);
                 this.setViewport(renderer);
-                Graphics.effekseer.captureBackground(0, 0, renderer.view.width, renderer.view.height);
+                if(!isBackgroundCaptured)
+                {
+                    Graphics.effekseer.captureBackground(0, 0, renderer.view.width, renderer.view.height);
+                    isBackgroundCaptured = true;
+                }
                 Graphics.effekseer.beginDraw();
                 Graphics.effekseer.drawHandle(this._handle);
                 Graphics.effekseer.endDraw();
