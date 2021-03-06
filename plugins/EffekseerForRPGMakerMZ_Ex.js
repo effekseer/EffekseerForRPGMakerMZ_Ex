@@ -89,4 +89,40 @@
         renderer.framebuffer.reset();
     };
 
+    Sprite_Animation.prototype.setProjectionMatrix = function(renderer) {
+        const x = (this._mirror ? -1 : 1) * renderer.view.height / renderer.view.width;
+        const y = -1;
+        const p = -1.0;
+        // prettier-ignore
+        Graphics.effekseer.setProjectionMatrix([
+            x, 0, 0, 0,
+            0, y, 0, 0,
+            0, 0, 1, p,
+            0, 0, 0, 1,
+        ]);
+    };
+    
+    Sprite_Animation.prototype.setCameraMatrix = function(/*renderer*/) {
+        // prettier-ignore
+        Graphics.effekseer.setCameraMatrix([
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, -10, 1
+        ]);
+    };
+    
+    Sprite_Animation.prototype.setViewport = function(renderer) {
+        const vw = this._viewportSize;
+        const vh = this._viewportSize;
+        const vx = this._animation.offsetX - vw / 2;
+        const vy = this._animation.offsetY - vh / 2;
+        const pos = this.targetPosition(renderer);
+        this._handle.setLocation(
+            (pos.x / renderer.view.width * 2.0 - 1.0) * 10.0,
+            (pos.y / renderer.view.height * 2.0 - 1.0) * 10.0, 
+            0);
+        renderer.gl.viewport(0, 0, renderer.view.width, renderer.view.height);
+    };
+
 })();
