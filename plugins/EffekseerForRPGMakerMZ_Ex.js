@@ -29,6 +29,11 @@
  * @type number
  * @default 10000
  * 
+ * @param DistortionEnabled
+ * @desc Enables/disables effect distortion.
+ * @type boolean
+ * @default false
+ * 
  */
 /*:ja
  * @target MZ
@@ -52,6 +57,11 @@
  * @type number
  * @default 10000
  * 
+ * @param DistortionEnabled
+ * @desc エフェクトの歪みを有効にするかどうか。
+ * @type boolean
+ * @default false
+ * 
  */
 
 (() => {
@@ -60,6 +70,7 @@
 
     var paramInstanceMaxCount = Number(PluginManager.parameters(pluginName)['InstanceMaxCount']);
     var paramSquareMaxCount = Number(PluginManager.parameters(pluginName)['SquareMaxCount']);
+    var isDistortionEnabled = PluginManager.parameters(pluginName)['DistortionEnabled'] != "false";
 
     Graphics._createEffekseerContext = function () {
         if (this._app && window.effekseer) {
@@ -81,7 +92,7 @@
         }
     };
 
-    Sprite_Animation.prototype.onAfterRender = function(renderer) {
+    Sprite_Animation.prototype.onAfterRender = function (renderer) {
         renderer.texture.reset();
         renderer.geometry.reset();
         renderer.state.reset();
@@ -89,40 +100,57 @@
         renderer.framebuffer.reset();
     };
 
-    Sprite_Animation.prototype.setProjectionMatrix = function(renderer) {
-        const x = (this._mirror ? -1 : 1) * renderer.view.height / renderer.view.width;
-        const y = -1;
-        const p = -1.0;
-        // prettier-ignore
-        Graphics.effekseer.setProjectionMatrix([
-            x, 0, 0, 0,
-            0, y, 0, 0,
-            0, 0, 1, p,
-            0, 0, 0, 1,
-        ]);
-    };
-    
-    Sprite_Animation.prototype.setCameraMatrix = function(/*renderer*/) {
-        // prettier-ignore
-        Graphics.effekseer.setCameraMatrix([
-            1, 0, 0, 0,
-            0, 1, 0, 0,
-            0, 0, 1, 0,
-            0, 0, -10, 1
-        ]);
-    };
-    
-    Sprite_Animation.prototype.setViewport = function(renderer) {
-        const vw = this._viewportSize;
-        const vh = this._viewportSize;
-        const vx = this._animation.offsetX - vw / 2;
-        const vy = this._animation.offsetY - vh / 2;
-        const pos = this.targetPosition(renderer);
-        this._handle.setLocation(
-            (pos.x / renderer.view.width * 2.0 - 1.0) * 10.0,
-            (pos.y / renderer.view.height * 2.0 - 1.0) * 10.0, 
-            0);
-        renderer.gl.viewport(0, 0, renderer.view.width, renderer.view.height);
-    };
+    if (isDistortionEnabled) {
+        Sprite_Animation.prototype.setProjectionMatrix = function (renderer) {
+            const x = (this._mirror ? -1 : 1) * renderer.view.height / renderer.view.width;
+            const y = -1;
+            const p = -1.0;
+            // prettier-ignore
+            Graphics.effekseer.setProjectionMatrix([
+                x, 0, 0, 0,
+                0, y, 0, 0,
+                0, 0, 1, p,
+                0, 0, 0, 1,
+            ]);
+        };
 
+        Sprite_Animation.prototype.setCameraMatrix = function (/*renderer*/) {
+            // prettier-ignore
+            Graphics.effekseer.setCameraMatrix([
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, -10, 1
+            ]);
+        };
+
+        Sprite_Animation.prototype.setViewport = function (renderer) {
+            const vw = this._viewportSize;
+            const vh = this._viewportSize;
+            const vx = this._animation.offsetX - vw / 2;
+            const vy = this._animation.offsetY - vh / 2;
+            const pos = this.targetPosition(renderer);
+            this._handle.setLocation(
+                ((pos.x - renderer.view.width / 2.0) / (renderer.view.height / 2.0)) * 10.0,
+                -(pos.y / renderer.view.height * 2.0 - 1.0) * 10.0,
+                0);
+            renderer.gl.viewport(0, 0, renderer.view.width, renderer.view.height);
+        };
+
+        Sprite_Animation.prototype._render = function (renderer) {
+            if (this._targets.length > 0 && this._handle && this._handle.exists) {
+                this.onBeforeRender(renderer);
+                this.saveViewport(renderer);
+                this.setProjectionMatrix(renderer);
+                this.setCameraMatrix(renderer);
+                this.setViewport(renderer);
+                Graphics.effekseer.captureBackground(0, 0, renderer.view.width, renderer.view.height);
+                Graphics.effekseer.beginDraw();
+                Graphics.effekseer.drawHandle(this._handle);
+                Graphics.effekseer.endDraw();
+                this.resetViewport(renderer);
+                this.onAfterRender(renderer);
+            }
+        };
+    }
 })();
