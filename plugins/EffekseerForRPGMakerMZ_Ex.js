@@ -104,13 +104,12 @@
         Sprite_Animation.prototype.setProjectionMatrix = function (renderer) {
             const x = (this._mirror ? -1 : 1) * renderer.view.height / renderer.view.width;
             const y = -1;
-            const p = -1.0;
             // prettier-ignore
             Graphics.effekseer.setProjectionMatrix([
                 x, 0, 0, 0,
                 0, y, 0, 0,
-                0, 0, 1, p,
-                0, 0, 0, 1,
+                0, 0, -0.01, 0,
+                0, 0, 0, 10,
             ]);
         };
 
