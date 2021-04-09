@@ -142,7 +142,7 @@
                 this._tickHandler(deltaTime);
             }
             if (this._canRender()) {
-                isBackgroundCaptured = false;
+                this.isBackgroundCaptured = false;
                 this._app.render();
             }
             this._fpsCounter.endTick();
@@ -155,10 +155,10 @@
                 this.setProjectionMatrix(renderer);
                 this.setCameraMatrix(renderer);
                 this.setViewport(renderer);
-                if(!isBackgroundCaptured)
+                if(!this.isBackgroundCaptured)
                 {
                     Graphics.effekseer.captureBackground(0, 0, renderer.view.width, renderer.view.height);
-                    isBackgroundCaptured = true;
+                    this.isBackgroundCaptured = true;
                 }
                 Graphics.effekseer.beginDraw();
                 Graphics.effekseer.drawHandle(this._handle);
