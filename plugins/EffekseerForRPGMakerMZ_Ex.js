@@ -10,7 +10,7 @@
 /*:
  * @target MZ
  * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
- * @plugindesc Effekseer Extended plugin v1.53b - 1.00
+ * @plugindesc Effekseer Extended plugin v1.60 - 1.00Beta2
  * @author Effekseer
  *
  * @help
@@ -38,7 +38,7 @@
 /*:ja
  * @target MZ
  * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
- * @plugindesc Effekseer 拡張プラグイン v1.53b - 1.00
+ * @plugindesc Effekseer 拡張プラグイン v1.60 - 1.00Beta2
  * @author Effekseer
  *
  * @help
@@ -136,6 +136,23 @@
             renderer.gl.viewport(0, 0, renderer.view.width, renderer.view.height);
         };
 
+        Sprite_Animation.prototype.updateEffectGeometry = function() {
+        };
+
+        Sprite_Animation.prototype.updateEffectGeometryOnRender = function() {
+            const scale = this._animation.scale / 100;
+            const r = Math.PI / 180;
+            const rx = this._animation.rotation.x * r;
+            const ry = this._animation.rotation.y * r;
+            const rz = this._animation.rotation.z * r;
+            if (this._handle) {
+                this._handle.setLocation(0, 0, 0);
+                this._handle.setRotation(rx, ry, rz);
+                this._handle.setScale(scale, scale, scale);
+                this._handle.setSpeed(this._animation.speed / 100);
+            }
+        };
+
         Graphics._onTick = function(deltaTime) {
             this._fpsCounter.startTick();
             if (this._tickHandler) {
@@ -149,6 +166,8 @@
         };
 
         Sprite_Animation.prototype._render = function (renderer) {
+            this.updateEffectGeometryOnRender();
+
             if (this._targets.length > 0 && this._handle && this._handle.exists) {
                 this.onBeforeRender(renderer);
                 this.saveViewport(renderer);
