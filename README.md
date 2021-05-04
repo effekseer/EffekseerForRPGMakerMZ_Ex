@@ -10,7 +10,7 @@ The plugin is for RPG MakerMZ to enhance an animation of Effekseer
 
 * 重要 : pluginsとlibsを上書きしてください。
 
-[1.60-1.01](https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex/releases/download/160-101/EffekseerForRPGMakerMZ_Ex-160-101.zip)
+[1.60-1.02](https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex/releases/download/160-102/EffekseerForRPGMakerMZ_Ex-160-102.zip)
 
 [1.53b-1.00](https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex/releases/download/153b-100/EffekseerForRPGMakerMZ_Ex-153b-100.zip)
 
