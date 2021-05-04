@@ -126,10 +126,12 @@
         Sprite_Animation.prototype.setViewport = function (renderer) {
             const halfW = renderer.view.width / 2;
             const pos = this.targetPosition(renderer);
-            const x = (this._mirror) ? (-(pos.x - halfW)) + halfW :  pos.x;
+            const vx = this._animation.offsetX;
+            const vy = this._animation.offsetY;
+            const x = (this._mirror) ? (-((pos.x - vx) - halfW)) + halfW : (pos.x + vx);
             this._handle.setLocation(
                 ((x - renderer.view.width / 2.0) / (renderer.view.height / 2.0)) * 10.0,
-                -(pos.y / renderer.view.height * 2.0 - 1.0) * 10.0,
+                -((pos.y + vy) / renderer.view.height * 2.0 - 1.0) * 10.0,
                 0);
             renderer.gl.viewport(0, 0, renderer.view.width, renderer.view.height);
         };
