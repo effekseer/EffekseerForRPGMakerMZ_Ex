@@ -10,7 +10,7 @@
 /*:
  * @target MZ
  * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
- * @plugindesc Effekseer Extended plugin v1.60d - 1.02
+ * @plugindesc Effekseer Extended plugin v1.61a - 1.00
  * @author Effekseer
  *
  * @help
@@ -38,7 +38,7 @@
 /*:ja
  * @target MZ
  * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
- * @plugindesc Effekseer 拡張プラグイン v1.60c - 1.02
+ * @plugindesc Effekseer 拡張プラグイン v1.61a - 1.02
  * @author Effekseer
  *
  * @help
