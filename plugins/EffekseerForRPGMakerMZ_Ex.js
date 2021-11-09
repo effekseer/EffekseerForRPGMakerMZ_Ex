@@ -170,7 +170,6 @@
 
             if (this._targets.length > 0 && this._handle && this._handle.exists) {
                 this.onBeforeRender(renderer);
-                this.saveViewport(renderer);
                 this.setProjectionMatrix(renderer);
                 this.setCameraMatrix(renderer);
                 this.setViewport(renderer);
