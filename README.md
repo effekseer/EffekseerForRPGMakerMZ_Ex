@@ -26,10 +26,10 @@ Increases the number of particles that can be displayed at the same time.
 
 同時に表示できるパーティクルの数を増やします。
 
-Support a distortion. (1.6)
+Support a distortion. 
 
-歪みをサポートします。 (1.6)
+歪みをサポートします。
 
-Support Effekseer1.6 (1.6)
+Support Effekseer1.7
 
-Effekseer1.6をサポートします。
+Effekseer1.7をサポートします。
