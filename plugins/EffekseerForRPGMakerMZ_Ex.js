@@ -10,7 +10,7 @@
 /*:
  * @target MZ
  * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
- * @plugindesc Effekseer Extended plugin v1.70b - 1.04
+ * @plugindesc Effekseer Extended plugin v1.70b - 1.05
  * @author Effekseer
  *
  * @help
@@ -38,7 +38,7 @@
 /*:ja
  * @target MZ
  * @url https://github.com/effekseer/EffekseerForRPGMakerMZ_Ex
- * @plugindesc Effekseer 拡張プラグイン v1.70b - 1.04
+ * @plugindesc Effekseer 拡張プラグイン v1.70b - 1.05
  * @author Effekseer
  *
  * @help
@@ -170,7 +170,12 @@
 
             if (this._targets.length > 0 && this._handle && this._handle.exists) {
                 this.onBeforeRender(renderer);
-                this.saveViewport(renderer);
+
+                // for before 1.33
+                if(this.saveViewport) {
+                    this.saveViewport(renderer);
+                }
+
                 this.setProjectionMatrix(renderer);
                 this.setCameraMatrix(renderer);
                 this.setViewport(renderer);
